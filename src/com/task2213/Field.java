@@ -36,7 +36,8 @@ public class Field {
      * Если координаты за пределами матрицы, метод возвращает null.
      */
     public Integer getValue(int x, int y) {
-        if (x >= 0 && x < width && y >= 0 && y < height) return matrix[y][x];
+        if (x >= 0 && x < width && y >= 0 && y < height)
+            return matrix[y][x];
 
         return null;
     }
@@ -45,7 +46,8 @@ public class Field {
      * Метод устанавливает переданное значение(value) в ячейку матрицы с координатами (x,y)
      */
     public void setValue(int x, int y, int value) {
-        if (x >= 0 && x < width && y >= 0 && y < height) matrix[y][x] = value;
+        if (x >= 0 && x < width && y >= 0 && y < height)
+            matrix[y][x] = value;
     }
 
     /**
@@ -70,7 +72,8 @@ public class Field {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 if (top + i >= height || left + j >= width) continue;
-                if (brickMatrix[i][j] == 1) canvas[top + i][left + j] = 2;
+                if (brickMatrix[i][j] == 1)
+                    canvas[top + i][left + j] = 2;
             }
         }
 
@@ -81,13 +84,18 @@ public class Field {
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
                 int index = canvas[i][j];
-                if (index == 0) System.out.print(" . ");
-                else if (index == 1) System.out.print(" X ");
-                else if (index == 2) System.out.print(" X ");
-                else System.out.print("???");
+                if (index == 0)
+                    System.out.print(" . ");
+                else if (index == 1)
+                    System.out.print(" X ");
+                else if (index == 2)
+                    System.out.print(" X ");
+                else
+                    System.out.print("???");
             }
             System.out.println();
         }
+
 
         System.out.println();
         System.out.println();
@@ -100,7 +108,7 @@ public class Field {
         //Создаем список для хранения линий
         ArrayList<int[]> lines = new ArrayList<int[]>();
 
-        //Копируем все неполные линии в список.
+        //Копируем все непустые линии в список.
         for (int i = 0; i < height; i++) {
             //подсчитываем количество единиц в строке - просто суммируем все ее значения
             int count = 0;
@@ -109,7 +117,8 @@ public class Field {
             }
 
             //Если сумма строки не равна ее ширине - добавляем в список
-            if (count != width) lines.add(matrix[i]);
+            if (count != width)
+                lines.add(matrix[i]);
         }
 
         //Добавляем недостающие строки в начало списка.
